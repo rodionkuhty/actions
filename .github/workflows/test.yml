@@ -21,3 +21,8 @@ jobs:
                 name: playwright-report
                 path: playwright-report/
                 retention-days: 30
+    echoing:
+        runs-on: ubuntu-latest
+        steps:
+          - name: Echoing, that everything is ok
+            run: echo "OK"
