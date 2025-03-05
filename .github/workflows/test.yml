@@ -21,10 +21,21 @@ jobs:
                 name: playwright-report
                 path: playwright-report/
                 retention-days: 30
-    echoing:
+    echoing-mac:
         runs-on: macos-latest
         needs: run-tests
         steps:
           - name: echo ok in mac
             run: echo "ok - $(uname)"
 
+    echoing-win:
+      runs-on: windows-latest
+      needs: [echoing-mac, run-tests]
+      steps:
+        - name: echo ok in win
+          run: |
+            if "%OS%" == "Windows_NT" ( \
+                echo Running on Windows \
+            ) else ( \
+                echo Not running on Windows \
+            ) \
