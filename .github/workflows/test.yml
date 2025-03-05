@@ -34,8 +34,8 @@ jobs:
       steps:
         - name: echo ok in win
           run: |
-            if "%OS%" == "Windows_NT" ( 
-                echo Running on Windows 
-            ) else ( 
-                echo Not running on Windows 
-            ) 
+            if ($env:OS -eq "Windows_NT") {
+            Write-Host "Running on Windows"
+            } else {
+            Write-Host "Not running on Windows"
+           }
