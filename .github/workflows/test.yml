@@ -34,8 +34,8 @@ jobs:
       steps:
         - name: echo ok in win
           run: |
-            if "%OS%" == "Windows_NT" ( \
-                echo Running on Windows \
-            ) else ( \
-                echo Not running on Windows \
-            ) \
+            if "%OS%" == "Windows_NT" ( 
+                echo Running on Windows 
+            ) else ( 
+                echo Not running on Windows 
+            ) 
