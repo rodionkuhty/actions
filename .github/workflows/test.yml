@@ -32,10 +32,5 @@ jobs:
       runs-on: windows-latest
       needs: [echoing-mac, run-tests]
       steps:
-        - name: echo ok in win
-          run: |
-            if ($env:OS -eq "Windows_NT") {
-            Write-Host "Running on Windows"
-            } else {
-            Write-Host "Not running on Windows"
-           }
+        - name: lsing
+          run: ls
