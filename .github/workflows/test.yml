@@ -19,6 +19,8 @@ jobs:
           run: cd fe
         - name: ls
           run: ls
+        - name: cd
+          run: cd fe
 #        - name: install node
 #          uses: actions/setup-node@v3
 #          with:
