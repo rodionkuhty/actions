@@ -7,3 +7,8 @@ jobs:
         steps:
           - name: test
             run: echo test
+    fe:
+      runs-on: ubuntu-latest
+      steps:
+        - name: lsing
+          run: ls
