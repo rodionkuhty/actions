@@ -10,14 +10,14 @@ jobs:
         - name: switch to front-end
           run: ls
           working-directory: ./fe
-#        - name: install node
-#          uses: actions/setup-node@v3
-#          with:
-#            node-version: '18'
-#        - name: install deps
-#          run: npm i
-#        - name: build fe app
-#          run: npm run build
+        - name: install node
+          uses: actions/setup-node@v3
+          with:
+            node-version: '18'
+        - name: install deps
+          run: npm ci
+        - name: build fe app
+          run: npm run build
 
 
 
