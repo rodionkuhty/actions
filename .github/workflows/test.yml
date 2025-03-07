@@ -12,18 +12,17 @@ jobs:
       steps:
         - name: checkout
           uses: actions/checkout@v4
-        - name: cd to the fe dir
-          run: cd fe/fe
+
         - name: ls
           run: ls
-        - name: install node
-          uses: actions/setup-node@v3
-          with:
-            node-version: '18'
-        - name: install deps
-          run: npm i
-        - name: build fe app
-          run: npm run build
+#        - name: install node
+#          uses: actions/setup-node@v3
+#          with:
+#            node-version: '18'
+#        - name: install deps
+#          run: npm i
+#        - name: build fe app
+#          run: npm run build
 
 
 
