@@ -16,6 +16,7 @@ jobs:
           uses: actions/checkout@v4
         - name: cd to the fe dir
           run: cd fe
+        - name: install node
           uses: actions/setup-node@v3
           with:
             node-version: '18'
