@@ -14,7 +14,12 @@ jobs:
           run: ls
         - name: checkout
           uses: actions/checkout@v4
-        - name: lsing
-          run: ls
+        - name: cd to the fe dir
+          run: cd fe
+        - name: install deps
+          run: npm ci
+        - name: build fe app
+          run: npm run build
+
 
 
