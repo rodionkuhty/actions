@@ -10,12 +10,10 @@ jobs:
     fe:
       runs-on: ubuntu-latest
       steps:
-        - name: lsing
-          run: ls
         - name: checkout
           uses: actions/checkout@v4
         - name: cd to the fe dir
-          run: cd fe
+          run: cd fe/fe
         - name: ls
           run: ls
         - name: install node
