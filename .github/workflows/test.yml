@@ -11,8 +11,11 @@ jobs:
           uses: actions/setup-node@v3
           with:
             node-version: '18'
-        - name: install front-end deps, and build
+        - name: install front-end deps, and build and start
           run: npm i && npm run build && npm run start
           working-directory: ./fe
+        - name: install test, browsers and run tests
+          run: npm i && npx playwright install --with-deps && npx playwright test
+          working-directory: ./e2e-tests
 
 
