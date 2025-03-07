@@ -16,6 +16,8 @@ jobs:
           uses: actions/checkout@v4
         - name: cd to the fe dir
           run: cd fe
+        - name: ls
+          run: ls
         - name: install node
           uses: actions/setup-node@v3
           with:
