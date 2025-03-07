@@ -2,11 +2,6 @@ name: e2e tests
 run-name: Rodion
 on: [push]
 jobs:
-    tests:
-        runs-on: ubuntu-latest
-        steps:
-          - name: test
-            run: echo test
     fe:
       runs-on: ubuntu-latest
       steps:
@@ -21,6 +16,8 @@ jobs:
           run: ls
         - name: cd
           run: cd fe
+        - name: ls
+          run: ls
 #        - name: install node
 #          uses: actions/setup-node@v3
 #          with:
