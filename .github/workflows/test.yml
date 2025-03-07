@@ -12,3 +12,9 @@ jobs:
       steps:
         - name: lsing
           run: ls
+        - name: checkout
+          uses: actions/checkout@v4
+        - name: lsing
+          run: ls
+
+
