@@ -1,6 +1,6 @@
 name: e2e tests
 run-name: ${{github.actor}}
-on: [push, workflow_call]
+on: [push, workflow_dispatch]
 jobs:
     fe:
       runs-on: ubuntu-latest
