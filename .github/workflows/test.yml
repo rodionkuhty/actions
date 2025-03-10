@@ -10,7 +10,7 @@ jobs:
         - name: setup node
           uses: actions/setup-node@v3
           with:
-            node-version: '18'
+            node-version: '20'
         - name: install front-end deps, and build and start
           run: npm i && npm run build
           working-directory: ./fe
