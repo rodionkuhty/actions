@@ -1,3 +1,4 @@
+#!/bin/bash
 echo "Hello github actions from docker container"
 echo "This is a bash script running inside a Docker container."
 echo "Current date and time: $(date)"
