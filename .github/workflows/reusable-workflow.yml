@@ -12,7 +12,7 @@ on:
         type: string
     secrets:
       HELLO_WORLD_SECRET:
-        required: true
+        required: false
     outputs:
       # Map the workflow output(s) to job output(s)
       reusable_output:
