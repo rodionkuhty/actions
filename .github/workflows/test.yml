@@ -21,7 +21,7 @@ jobs:
       steps:
         - uses: actions/checkout@v4
           name: check reusable flow
-        - uses: ./.github/workflows/reusable_action.yml
+        - uses: ./.github/workflows/reusable_action
           with:
             test-type: web
   
