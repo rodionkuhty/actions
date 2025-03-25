@@ -17,11 +17,9 @@ jobs:
           run: npm i && npx playwright install --with-deps && npx playwright test 
           working-directory: ./e2e-tests
     work:
-      runs-on: ubuntu-latest
-      steps:
-        - uses: actions/checkout@v4
-          name: check reusable flow
-        - uses: ./.github/workflows/reusable_action
-          with:
-            test-type: web
+      needs: [fe]
+      uses: ./.github/workflows/reusable-workflow.yml
+      with:
+        reusable_input: ${{ github.event.inputs.reusable_input }}
+        filename: ${{ github.event.inputs.filename }}
   
