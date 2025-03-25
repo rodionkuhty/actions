@@ -16,7 +16,9 @@ jobs:
         - name: install test, browsers and run tests
           run: npm i && npx playwright install --with-deps && npx playwright test 
           working-directory: ./e2e-tests
-        - name: check new workflow
-          uses: ./.github/workflows/reusable_action.yml
+        - uses: actions/checkout@v4
+          name: check reusable flow
+        - uses: ./.github/workflows/reusable_action.yml
           with:
             test-type: web
+  
