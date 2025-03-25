@@ -1,0 +1,37 @@
+FROM mcr.microsoft.com/playwright:v1.51.1-noble AS base
+
+WORKDIR /usr/src/app
+
+COPY package*.json ./
+
+FROM base AS dev
+
+RUN --mount=type=cache,target=/usr/src/app/.npm \
+  npm set cache /usr/src/app/.npm && \
+  npm install
+
+COPY . .
+
+CMD ["npx", "playwright", "test"]
+
+FROM base AS prod
+
+ENV NODE_ENV=prod
+ 
+RUN --mount=type=cache,target=/usr/src/app/.npm \
+  npm set cache /usr/src/app/.npm && \
+  npm ci
+
+COPY . .
+
+CMD ["npx", "playwright", "test"]
+
+FROM base AS dev-browser-extension
+
+RUN --mount=type=cache,target=/usr/src/app/.npm \
+  npm set cache /usr/src/app/.npm && \
+  npm install
+
+COPY . .
+
+CMD ["npx", "playwright", "test"]

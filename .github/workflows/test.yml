@@ -1,6 +1,6 @@
 name: e2e tests
 run-name: ${{github.actor}}
-on: [push, workflow_dispatch]
+on: [workflow_dispatch]
 jobs:
     fe:
       runs-on: ubuntu-latest
@@ -16,5 +16,7 @@ jobs:
         - name: install test, browsers and run tests
           run: npm i && npx playwright install --with-deps && npx playwright test 
           working-directory: ./e2e-tests
-
-
+        - name: check new workflow
+          uses: ./.github/workflows/reusable_action.yml
+          with:
+            test-type: web

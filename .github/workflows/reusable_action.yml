@@ -1,0 +1,19 @@
+name: "My Reusable Action"
+on:
+    workflow_call:
+        inputs:
+            test-type:
+                required: true
+                type: string
+                description: "The environment to run the tests in"
+                default: "web"
+jobs:
+    run-e2e-tests:
+        runs-on: ubuntu-latest
+        steps:
+            - name: echoing
+              run: echo "Running e2e tests in ${{ inputs.test-type }} environment"
+                   
+
+
+
