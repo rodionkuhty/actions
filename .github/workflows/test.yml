@@ -20,7 +20,7 @@ jobs:
       needs: [fe]
       uses: ./.github/workflows/playwright.yml
       with:
-        name: web
+        name: chromium
         workdir: ./e2e-tests
         
   
