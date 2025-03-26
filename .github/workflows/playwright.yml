@@ -26,6 +26,7 @@ jobs:
           node-version: lts/*
       - name: install deps
         run: npm ci
+        working-directory: ${{ inputs.workdir }}    
       - name: run tests
         run: npx playwright test --project=${{ inputs.name }} 
         working-directory: ${{ inputs.workdir }}         
