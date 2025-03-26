@@ -18,8 +18,9 @@ jobs:
           working-directory: ./e2e-tests
     work:
       needs: [fe]
-      uses: ./.github/workflows/reusable-workflow.yml
+      uses: ./.github/workflows/reusable-workflows/playwright.yml
       with:
-        name: rodion
+        name: web
+        workdir: ./e2e-tests
         
   
