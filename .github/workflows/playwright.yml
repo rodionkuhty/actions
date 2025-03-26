@@ -7,9 +7,6 @@ on:
         description: "progect name"
         required: true
         type: string
-        options:
-          - "web"
-          - "browser-extension"
       workdir:
         description: "working directory"
         type: string
@@ -23,7 +20,6 @@ jobs:
       image: mcr.microsoft.com/playwright:v1.51.1-noble 
       options: --user 1001
     steps:
-      - name: checkout and install node
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:

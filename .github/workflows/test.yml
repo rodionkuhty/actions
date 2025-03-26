@@ -18,7 +18,7 @@ jobs:
           working-directory: ./e2e-tests
     work:
       needs: [fe]
-      uses: ./.github/workflows/reusable-workflows/playwright.yml
+      uses: ./.github/workflows/playwright.yml
       with:
         name: web
         workdir: ./e2e-tests
