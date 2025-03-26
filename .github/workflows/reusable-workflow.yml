@@ -10,11 +10,6 @@ on:
       surname:
         required: true
         type: string
-    outputs:
-      # Map the workflow output(s) to job output(s)
-      reusable_output:
-        description: 'Output from the reusable workflow'
-        value: ${{ jobs.reusable-workflow-job.outputs.job_output }}
 
 defaults:
   run:
@@ -33,7 +28,7 @@ jobs:
           HELLO_WORLD_SECRET: ${{ secrets.HELLO_WORLD_SECRET }}
         run: |
           echo "reusable_input=${{ inputs.name }}"
-          echo "step_output=${{ inputs.surname }}_processed" >> $GITHUB_OUTPUT
+          echo "reusable_input=${{ inputs.surname }}"
       - name: Process file
         run: |
           echo "Processing file: ${{ inputs.name }}"
