@@ -1,35 +1,16 @@
-name: Reusable workflow
+name: Reusable Workflow
 
 on:
   workflow_call:
     inputs:
       name:
-        description: 'Input to the reusable workflow'
+        description: "Input name"
         required: true
         type: string
-      surname:
-        required: true
-        type: string
-
-defaults:
-  run:
-    shell: bash
 
 jobs:
-  reusable-workflow-job:
-    runs-on: ubuntu-20.04
-    # Map the job output(s) to step output(s)
-    outputs:
-      job_output: ${{ steps.process-step.outputs.step_output }}
+  example-job:
+    runs-on: ubuntu-latest
     steps:
-      - name: Process reusable input
-        id: process-step
-        env:
-          HELLO_WORLD_SECRET: ${{ secrets.HELLO_WORLD_SECRET }}
-        run: |
-          echo "reusable_input=${{ inputs.name }}"
-          echo "reusable_input=${{ inputs.surname }}"
-      - name: Process file
-        run: |
-          echo "Processing file: ${{ inputs.name }}"
-          echo "file processed" >> ${{ inputs.surname }}
+      - name: Print input
+        run: echo "Hello, ${{ inputs.name }}"
