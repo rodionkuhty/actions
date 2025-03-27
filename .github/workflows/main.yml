@@ -7,11 +7,13 @@ jobs:
       steps:
         - name: checkout
           uses: actions/checkout@v4
+        - name: create docker network
+          run: docker network create playwright  
         - name: build docker image
           run: docker build . -f Dockerfile-front-end -t frontend
           working-directory: ./fe
         - name: run docker container
-          run: docker run -p 3000:3000 -d frontend --name frontend
+          run: docker run -p 3000:3000 -d frontend --network=frontend  --name frontend
           working-directory: ./fe
     # playwright:
     #   needs: frontend
@@ -23,8 +25,6 @@ jobs:
           run: docker network ls
         - name: ps
           run: docker ps
-        - name: echoing2
-          run: curl http://0.0.0.0:3000
 
 
         
