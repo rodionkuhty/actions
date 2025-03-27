@@ -11,7 +11,7 @@ jobs:
           run: docker build . -f Dockerfile-front-end -t frontend
           working-directory: ./fe
         - name: run docker container
-          run: docker run -d -p 3000:3000 frontend --name frontend
+          run: docker run --network=host -d -p 3000:3000 frontend --name frontend
           working-directory: ./fe
     # playwright:
     #   needs: frontend
