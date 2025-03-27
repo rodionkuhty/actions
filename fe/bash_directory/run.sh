@@ -2,4 +2,4 @@
 echo "start"
 ls -l
 echo "End of script."
-curl http://playwright:3000
+curl http://frontend:3000
