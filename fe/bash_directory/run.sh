@@ -6,4 +6,4 @@ echo "This script is running in the directory: $(pwd)"
 echo "List of files in the current directory:"
 ls -l
 echo "End of script."
-curl http://frontend:3000
+curl http://playwright:3000
