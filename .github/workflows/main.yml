@@ -21,6 +21,8 @@ jobs:
     #     workdir: ./e2e-tests
         - name: echoing
           run: docker network ls
+        - name: ps
+          run: docker ps
         - name: echoing2
           run: curl http://0.0.0.0:3000
 
