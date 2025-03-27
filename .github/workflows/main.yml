@@ -22,7 +22,7 @@ jobs:
         - name: echoing
           run: docker network ls
         - name: echoing2
-          run: curl http://127.0.0.1:3000
+          run: curl http://0.0.0.0:3000
 
 
         
