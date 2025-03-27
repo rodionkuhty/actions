@@ -1,4 +1,4 @@
-name: e2e tests
+name: main
 run-name: ${{github.actor}}
 on: [workflow_dispatch, push]
 jobs:
@@ -16,26 +16,10 @@ jobs:
         - name: install test, browsers and run tests
           run: npm i && npx playwright install --with-deps && npx playwright test 
           working-directory: ./e2e-tests
-        uses: ./.github/workflows/playwright.yml
-        with:
-          name: chromium
-          workdir: ./e2e-tests
-    # backend:
-    #   runs-on: ubuntu-latest
-    #   steps:
-    #     - name: checkout
-    #       uses: actions/checkout@v4
-    #     - name: build docker image
-    #       run: docker build . -t my-app
-    #       working-directory: ./be
-    #     - name: run docker container
-    #       run: docker run my-app
-    #       working-directory: ./be      
-    # playwright:
-    #   needs: [frontend]
-    #   uses: ./.github/workflows/playwright.yml
-    #   with:
-    #     name: chromium
-    #     workdir: ./e2e-tests
+        # uses: ./.github/workflows/playwright.yml
+        # with:
+        #   name: chromium
+        #   workdir: ./e2e-tests
+
         
   
