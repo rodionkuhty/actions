@@ -20,7 +20,7 @@ jobs:
     #     name: chromium
     #     workdir: ./e2e-tests
         - name: echoing
-          run: curl "http://localhost:3000"
+          run: curl "http://127.0.0.1:3000"
 
 
         
