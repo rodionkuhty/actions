@@ -8,7 +8,7 @@ jobs:
         - name: checkout
           uses: actions/checkout@v4
         - name: build docker image
-          run: docker build . -t my-app
+          run: docker build . -f Dockerfile-front-end -t my-app
           working-directory: ./fe
         - name: run docker container
           run: docker run my-app
