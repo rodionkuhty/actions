@@ -13,13 +13,12 @@ jobs:
         - name: run docker container
           run: docker run my-app
           working-directory: ./fe
-        - name: install test, browsers and run tests
-          run: npm i && npx playwright install --with-deps && npx playwright test 
-          working-directory: ./e2e-tests
-        # uses: ./.github/workflows/playwright.yml
-        # with:
-        #   name: chromium
-        #   workdir: ./e2e-tests
+        - name: checkout
+          uses: actions/checkout@v4  
+        - uses: ./.github/workflows/playwright.yml
+          with:
+            name: chromium
+            workdir: ./e2e-tests        
 
         
   
