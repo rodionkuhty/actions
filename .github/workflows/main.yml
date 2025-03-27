@@ -25,6 +25,8 @@ jobs:
           run: docker network ls
         - name: ps
           run: docker ps
+        - name: curling
+          run: curl http://localhost:3000
 
 
         
