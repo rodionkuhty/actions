@@ -13,12 +13,13 @@ jobs:
         - name: run docker container
           run: docker run my-app
           working-directory: ./fe
-        - name: checkout
-          uses: actions/checkout@v4  
-        - uses: ./.github/workflows/playwright.yml
-          with:
-            name: chromium
-            workdir: ./e2e-tests        
+    playwright:
+      needs: frontend
+      uses: ./.github/workflows/playwright.yml
+      with:
+        name: chromium
+        workdir: ./e2e-tests
+
 
         
   
