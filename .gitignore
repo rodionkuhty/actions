@@ -10,4 +10,6 @@ e2e-tests/playwright/.cache/
 /fe/node_modules
 /fe/.next
 
-# e2e
+# be
+bin/
+obj/
