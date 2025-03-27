@@ -25,8 +25,12 @@ jobs:
           run: docker network ls
         - name: ps
           run: docker ps
-        - name: curling
-          run: curl http://localhost:3000
+        - name: create bash-test docker
+          run: docker build . -t bash-test  
+          working-directory: ./fe
+        - name: run bash container
+          run: docker run bash-test --network=playwright --name bash
+          working-directory: ./fe  
 
 
         
