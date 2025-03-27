@@ -8,12 +8,12 @@ jobs:
         - name: checkout
           uses: actions/checkout@v4
         - name: create docker network
-          run: docker network create playwright  
+          run: docker network create playwright 
         - name: build docker image
           run: docker build . -f Dockerfile-front-end -t frontend
           working-directory: ./fe
         - name: run docker container
-          run: docker run -p 3000:3000 -d frontend --network=playwright  --name frontend
+          run: docker run --network=playwright --name frontend -p 3000:3000 -d frontend   
           working-directory: ./fe
     # playwright:
     #   needs: frontend
