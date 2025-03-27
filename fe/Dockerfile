@@ -8,6 +8,10 @@
 # RUN npm run build
 
 FROM ubuntu:latest
+
+RUN apt update
+RUN apt install curl -y
+
 WORKDIR /bash_directory
 COPY ./bash_directory .
 RUN chmod +x /bash_directory/run.sh
