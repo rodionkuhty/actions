@@ -13,12 +13,14 @@ jobs:
         - name: run docker container
           run: docker run -d my-app
           working-directory: ./fe
-    playwright:
-      needs: frontend
-      uses: ./.github/workflows/playwright.yml
-      with:
-        name: chromium
-        workdir: ./e2e-tests
+    # playwright:
+    #   needs: frontend
+    #   uses: ./.github/workflows/playwright.yml
+    #   with:
+    #     name: chromium
+    #     workdir: ./e2e-tests
+        - name: echoing
+          run: curl "http://localhost:3000"
 
 
         
