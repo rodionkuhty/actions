@@ -8,10 +8,10 @@ jobs:
         - name: checkout
           uses: actions/checkout@v4
         - name: build docker image
-          run: docker build . -f Dockerfile-front-end -t my-app
+          run: docker build . -f Dockerfile-front-end -t frontend
           working-directory: ./fe
         - name: run docker container
-          run: docker run -d -p 3000:3000 my-app
+          run: docker run -d -p 3000:3000 frontend --name frontend
           working-directory: ./fe
     # playwright:
     #   needs: frontend
