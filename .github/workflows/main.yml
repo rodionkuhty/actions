@@ -16,15 +16,11 @@ jobs:
           with:
             project: web
             workdir: ./fe
-
-        - name: echoing
-          run: docker ps && docker network ls
-        - name: create bash-test docker
-          run: docker build . -t bash-test  
-          working-directory: ./fe
-        - name: run bash container
-          run: docker run --network=playwright bash-test 
-          working-directory: ./fe  
+        - name: run playwright tests
+          uses: ./.github/workflows/actions/playwright
+          with:
+            project: web
+            workdir: ./e2e-tests    
 
 
         
