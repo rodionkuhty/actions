@@ -20,10 +20,13 @@ runs:
         node-version: lts/*
     - name: install deps
       run: npm ci
+      shell: bash
       working-directory: ${{ inputs.workdir }}
     - name: install playwright browsers
       run: npx playwright install --with-deps
+      shell: bash
       working-directory: ${{ inputs.workdir }}
     - name: Run Playwright tests
       run: npx playwright test --project=${{ inputs.project }} --trace on
+      shell: bash
       working-directory: ${{ inputs.workdir }}
