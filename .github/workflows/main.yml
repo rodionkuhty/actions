@@ -19,7 +19,7 @@ jobs:
         - name: run playwright tests
           uses: ./.github/workflows/actions/playwright
           with:
-            project: web
+            project: chromium
             workdir: ./e2e-tests    
 
 
