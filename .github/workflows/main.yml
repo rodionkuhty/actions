@@ -9,6 +9,8 @@ jobs:
           uses: actions/checkout@v4
         - name: create docker network
           run: docker network create playwright 
+        - name: checkout
+          uses: actions/checkout@v4
         - name: build frontend docker image
           uses: ./.github/workflows/actions/frontend.yml
           with:
