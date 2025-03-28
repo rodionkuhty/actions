@@ -14,19 +14,23 @@ on:
 
 jobs:
   playwright:
-    name: 'playwright tests'
+    name: playwright tests
     runs-on: ubuntu-latest
-    container:
-      image: mcr.microsoft.com/playwright:v1.51.1-noble 
-      options: --user 1001
+    services:
+      playwright:
+        image: mcr.microsoft.com/playwright:v1.51.1-noble
+        options: --network=playwright
+        ports:
+          - 3000:3000
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: lts/*
-      - name: install deps
-        run: npm ci
-        working-directory: ${{ inputs.workdir }}    
-      - name: run tests
-        run: npx playwright test --project=${{ inputs.name }} 
-        working-directory: ${{ inputs.workdir }}         
+        - uses: actions/checkout@v4
+        - uses: actions/setup-node@v4
+          with:
+            node-version: lts/*
+        - name: install deps
+          run: npm install
+          working-directory: ${{ inputs.workdir }}
+        - name: run tests
+          run: npx playwright test --project=${{ inputs.name }} -- trace on
+          working-directory: ${{ inputs.workdir }}    
+   
