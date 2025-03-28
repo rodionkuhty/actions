@@ -13,6 +13,8 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - name: checkout
+      uses: actions/checkout@v4
     - name: build frontend docker image
       run: docker build . -f Dockerfile-front-end -t frontend
       working-directory: ${{ inputs.workdir }}
