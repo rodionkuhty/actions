@@ -12,7 +12,7 @@ jobs:
         - name: checkout
           uses: actions/checkout@v4
         - name: build frontend docker image
-          uses: ./.github/workflows/actions/frontend.yml
+          uses: ./.github/workflows/actions/frontend/action.yml
           with:
             project: web
             workdir: ./fe
