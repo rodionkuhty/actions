@@ -1,16 +1,11 @@
-name: "frontend"
+name: "backend"
 description: "build backend docker image for e2e tests"
 
 inputs:
-  project:
-    description: "project name"
-    required: false
-    type: string
-    default: "web"
   workdir:
     description: "working directory"
     type: string
-    default: "./fe"
+    default: "./be"
 
 runs:
   using: "composite"
@@ -20,16 +15,16 @@ runs:
       shell: bash 
     - name: Stop and remove existing container
       run: |
-        docker stop frontend || true
-        docker rm frontend || true
+        docker stop backend || true
+        docker rm backend || true
       shell: bash
 
-    - name: build frontend docker image
-      run: docker build . -f Dockerfile-front-end -t frontend
+    - name: build backend docker image
+      run: docker build . -t backend
       working-directory: ${{ inputs.workdir }}
       shell: bash
 
-    - name: run frontend docker container
-      run: docker run --network=playwright --name frontend -p 3000:3000 -d frontend
+    - name: run backend docker container
+      run: docker run --network=playwright --name backend -p 8080:8080 -d backend
       working-directory: ${{ inputs.workdir }}
       shell: bash    
