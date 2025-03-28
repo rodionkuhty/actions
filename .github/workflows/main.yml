@@ -16,6 +16,7 @@ jobs:
           with:
             project: web
             workdir: ./fe
+            
         - name: run playwright tests
           uses: ./.github/workflows/actions/playwright
           with:
