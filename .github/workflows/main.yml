@@ -15,22 +15,22 @@ jobs:
         - name: run docker container
           run: docker run --network=playwright --name frontend -p 3000:3000 -d frontend   
           working-directory: ./fe
-    # playwright:
-    #   needs: frontend
-    #   uses: ./.github/workflows/playwright.yml
-    #   with:
-    #     name: chromium
-    #     workdir: ./e2e-tests
-        - name: echoing
-          run: docker network ls
-        - name: ps
-          run: docker ps
-        - name: create bash-test docker
-          run: docker build . -t bash-test  
-          working-directory: ./fe
-        - name: run bash container
-          run: docker run --network=playwright bash-test 
-          working-directory: ./fe  
+    playwright:
+      needs: frontend
+      uses: ./.github/workflows/playwright.yml
+      with:
+        name: chromium
+        workdir: ./e2e-tests
+        # - name: echoing
+        #   run: docker network ls
+        # - name: ps
+        #   run: docker ps
+        # - name: create bash-test docker
+        #   run: docker build . -t bash-test  
+        #   working-directory: ./fe
+        # - name: run bash container
+        #   run: docker run --network=playwright bash-test 
+        #   working-directory: ./fe  
 
 
         
