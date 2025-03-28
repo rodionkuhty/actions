@@ -25,10 +25,10 @@ runs:
 
     - name: build frontend docker image
       run: docker build . -f Dockerfile-front-end -t frontend
-      shell: bash
       working-directory: ${{ inputs.workdir }}
+      shell: bash
 
     - name: run frontend docker container
       run: docker run --network=playwright --name frontend -p 3000:3000 -d frontend
-      shell: bash
-      working-directory: ${{ inputs.workdir }}    
+      working-directory: ${{ inputs.workdir }}
+      shell: bash    
