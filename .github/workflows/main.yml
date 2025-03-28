@@ -14,12 +14,6 @@ jobs:
           with:
             project: web
             workdir: ./fe
-    # playwright:
-    #   needs: frontend
-    #   uses: ./.github/workflows/playwright.yml
-    #   with:
-    #     name: chromium
-    #     workdir: ./e2e-tests
         - name: echoing
           run: docker ps && docker network ls
         - name: create bash-test docker
