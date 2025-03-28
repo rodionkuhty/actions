@@ -1,5 +1,6 @@
 name: "frontend"
 description: "build frintend docker image for e2e tests"
+
 inputs:
   project:
     description: "project name"
@@ -10,11 +11,10 @@ inputs:
     description: "working directory"
     type: string
     default: "./fe"
+
 runs:
   using: "composite"
   steps:
-    - name: checkout
-      uses: actions/checkout@v4
     - name: build frontend docker image
       run: docker build . -f Dockerfile-front-end -t frontend
       working-directory: ${{ inputs.workdir }}
