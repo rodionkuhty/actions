@@ -15,9 +15,17 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - name: Ensure Docker network exists
+      run: docker network inspect playwright || docker network create playwright  
+    - name: Stop and remove existing container
+      run: |
+        docker stop frontend || true
+        docker rm frontend || true
+        
     - name: build frontend docker image
       run: docker build . -f Dockerfile-front-end -t frontend
       working-directory: ${{ inputs.workdir }}
+
     - name: run frontend docker container
       run: docker run --network=playwright --name frontend -p 3000:3000 -d frontend
       working-directory: ${{ inputs.workdir }}    

@@ -7,13 +7,16 @@ jobs:
       steps:
         - name: checkout
           uses: actions/checkout@v4
+
         - name: create docker network
           run: docker network create playwright 
+
         - name: build frontend docker image
-          uses: ./.github/workflows/actions/frontend/action.yml
+          uses: ./.github/workflows/actions/frontend
           with:
             project: web
             workdir: ./fe
+
         - name: echoing
           run: docker ps && docker network ls
         - name: create bash-test docker
