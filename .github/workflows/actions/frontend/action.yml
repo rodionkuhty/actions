@@ -16,7 +16,8 @@ runs:
   using: "composite"
   steps:
     - name: Ensure Docker network exists
-      run: docker network inspect playwright || docker network create playwright  
+      run: docker network inspect playwright || docker network create playwright 
+      shell: bash 
     - name: Stop and remove existing container
       run: |
         docker stop frontend || true
