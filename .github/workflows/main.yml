@@ -11,7 +11,7 @@ jobs:
           run: docker network create playwright 
         - name: build frontend docker image
           # uses: actions/checkout@v4
-          uses: ./.github/workflows/actions/frontend/frontend.yml
+          uses: ./.github/workflows/actions/frontend/action.yml
           with:
             project: web
             workdir: ./fe
