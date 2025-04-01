@@ -1,0 +1,54 @@
+name: Frontend Test Workflow
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  test-frontend:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the repository
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      # Install dependencies and build the frontend
+      - name: Install dependencies and build frontend
+        working-directory: ./fe
+        run: |
+          npm install
+          npm run build
+
+      # Run the frontend in a container
+      - name: Run frontend in Docker container
+        run: |
+          docker build -t frontend-app ./fe
+          docker run -d -p 3000:3000 --name frontend-container frontend-app
+        env:
+          CI: true
+
+      # Wait for the frontend to start
+      - name: Wait for frontend to start
+        run: |
+          sleep 10
+
+      # Make a curl request to the frontend start page
+      - name: Test frontend start page
+        run: |
+          curl -f http://localhost:3000 || exit 1
+
+      # Cleanup Docker container
+      - name: Cleanup Docker container
+        if: always()
+        run: |
+          docker stop frontend-container
+          docker rm frontend-container
