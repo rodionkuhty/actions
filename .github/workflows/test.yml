@@ -21,17 +21,10 @@ jobs:
         with:
           node-version: lts/*
 
-      # Install dependencies and build the frontend
-      - name: Install dependencies and build frontend
-        working-directory: ./fe
-        run: |
-          npm install
-          npm run build
-
       # Run the frontend in a container
       - name: Run frontend in Docker container
         run: |
-          docker build . -f Dockerfile-front-end -t frontend-app ./fe
+          docker build ./fe -f Dockerfile-front-end -t frontend-app 
           docker run -d -p 3000:3000 --name frontend-container frontend-app
         env:
           CI: true
