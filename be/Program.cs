@@ -18,14 +18,7 @@ app.UseHttpsRedirection();
 
 app.MapGet("/test", () =>
 {
-    var forecast =  Enumerable.Range(1, 5).Select(index =>
-        new Test
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            Constants.Summaries[Random.Shared.Next(Constants.Summaries.Length)]
-        ))
-        .ToArray();
+    var forecast = new Test(DateOnly.FromDateTime(DateTime.Now), 1, "test");
     return forecast;
 })
 .WithName("GetWeatherForecast");
