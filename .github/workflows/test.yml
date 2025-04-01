@@ -31,7 +31,7 @@ jobs:
       # Run the frontend in a container
       - name: Run frontend in Docker container
         run: |
-          docker build -t frontend-app ./fe
+          docker build -t -f Dockerfile-front-end frontend-app ./fe
           docker run -d -p 3000:3000 --name frontend-container frontend-app
         env:
           CI: true
