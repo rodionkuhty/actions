@@ -16,7 +16,12 @@ const geistMono = Geist_Mono({
 
 export default function Home() {
   
-  const [data, setData] = useState(null);
+  interface Data {
+    date: string;
+    temperatureC: number;
+  }
+
+  const [data, setData] = useState<Data | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
