@@ -7,7 +7,7 @@ on:
   pull_request:
 
 jobs:
-  test-frontend:
+  test-self:
     runs-on: [self-hosted, macOS]
 
     steps:
