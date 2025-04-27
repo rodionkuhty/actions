@@ -15,3 +15,4 @@ jobs:
               aws-region: us-east-1  
           - name: check instances
             run: aws ec2 describe-instances
+            run: aws ec2 start-instances --instance-ids i-0cf85659febbca50d
