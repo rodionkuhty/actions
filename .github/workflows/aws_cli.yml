@@ -4,6 +4,8 @@ on:
 jobs:
     check:
         runs-on: ubuntu-latest
+        outputs:
+          instance_status: ${{steps.instance_status_id.outputs.running_status }}
         steps:
           - name: checkout
             uses: actions/checkout@v4
@@ -14,6 +16,7 @@ jobs:
               aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
               aws-region: us-east-1  
           - name: check instance status
+            id: instance_status_id
             run: |
               INSTANCE_ID="i-0cf85659febbca50d"
               STATUS=$(aws ec2 describe-instances --instance-ids $INSTANCE_ID --query "Reservations[0].Instances[0].State.Name" --output text)
@@ -24,6 +27,18 @@ jobs:
                 aws ec2 start-instances --instance-ids $INSTANCE_ID
                 aws ec2 wait instance-running --instance-ids $INSTANCE_ID
                 echo "Instance is running!"
+                echo "running_status=1" >> "$GITHUB_OUTPUT"
               else
                 echo "Instance is running!"
               fi
+    self:
+      runs-on: ubuntu-latest
+      needs: check
+      steps:
+        - name: check
+          if: ${{needs.check.outputs.running_status}} == 1
+          run: echo "Hello world!"
+
+    
+
+
