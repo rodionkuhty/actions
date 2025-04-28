@@ -32,7 +32,7 @@ jobs:
                 echo "Instance is running!"
               fi
     self:
-      runs-on: ubuntu-latest
+      runs-on: [self-hosted, macOS]
       needs: check
       steps:
         - name: check
