@@ -21,8 +21,7 @@ jobs:
               if [[ "$STATUS" != "running" ]]; then
                 echo "Instance is not running! Current state: $STATUS"
                 echo "Running instance"
-                aws ec2 start-instances --instance-ids i-0cf85659febbca50d
-                exit 1
+                aws ec2 start-instances --instance-ids $INSTANCE_ID
               else
                 echo "Instance is running!"
               fi
