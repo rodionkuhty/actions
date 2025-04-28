@@ -1,16 +1,16 @@
-name: Frontend Test Workflow
+# name: Frontend Test Workflow
 
-on:
-  push:
-    branches:
-      - main
-  pull_request:
+# on:
+#   push:
+#     branches:
+#       - main
+#   pull_request:
 
-jobs:
-  test-self:
-    runs-on: [self-hosted, macOS]
+# jobs:
+#   test-self:
+#     runs-on: [self-hosted, macOS]
 
-    steps:
-      # Checkout the repository
-      - name: run simple code
-        run: echo "self hosted"
+#     steps:
+#       # Checkout the repository
+#       - name: run simple code
+#         run: echo "self hosted"
