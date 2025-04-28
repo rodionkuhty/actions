@@ -22,6 +22,8 @@ jobs:
                 echo "Instance is not running! Current state: $STATUS"
                 echo "Running instance"
                 aws ec2 start-instances --instance-ids $INSTANCE_ID
+                aws ec2 wait instance-running --instance-ids $INSTANCE_ID
+                echo "Instance is running!"
               else
                 echo "Instance is running!"
               fi
