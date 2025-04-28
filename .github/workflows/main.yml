@@ -1,32 +1,32 @@
-name: main
-run-name: playwright
-on: [workflow_dispatch, push]
-jobs:
-    frontend:
-      runs-on: ubuntu-latest
-      steps:
-        - name: checkout
-          uses: actions/checkout@v4
+# name: main
+# run-name: playwright
+# on: [workflow_dispatch, push]
+# jobs:
+#     frontend:
+#       runs-on: ubuntu-latest
+#       steps:
+#         - name: checkout
+#           uses: actions/checkout@v4
 
-        - name: create docker network
-          run: docker network create playwright 
+#         - name: create docker network
+#           run: docker network create playwright 
 
-        - name: build backend docker image
-          uses: ./.github/workflows/actions/backend
-          with:
-            workdir: ./be
+#         - name: build backend docker image
+#           uses: ./.github/workflows/actions/backend
+#           with:
+#             workdir: ./be
         
-        - name: build frontend docker image
-          uses: ./.github/workflows/actions/frontend
-          with:
-            project: web
-            workdir: ./fe
+#         - name: build frontend docker image
+#           uses: ./.github/workflows/actions/frontend
+#           with:
+#             project: web
+#             workdir: ./fe
 
-        - name: run playwright tests
-          uses: ./.github/workflows/actions/playwright
-          with:
-            project: chromium
-            workdir: ./e2e-tests    
+#         - name: run playwright tests
+#           uses: ./.github/workflows/actions/playwright
+#           with:
+#             project: chromium
+#             workdir: ./e2e-tests    
 
 
         
