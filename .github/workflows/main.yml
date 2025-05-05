@@ -3,14 +3,7 @@ run-name: playwright
 on: [workflow_dispatch, push]
 jobs:
     pages:
-      runs-on: ubuntu-latest
-      steps:
-        - name: checkout
-          uses: actions/checkout@v4
-
-        - name: run playwright tests
-          uses: ./.github/workflows/playwright.yml
-          with:
-            project: chromium
-            dir: ./e2e-tests
-          
+      uses: ./.github/workflows/playwright.yml
+      with:
+        project: web
+        dir: ./e2e-tests
