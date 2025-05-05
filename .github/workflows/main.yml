@@ -8,7 +8,10 @@ jobs:
         - name: checkout
           uses: actions/checkout@v4
         - name: run playwright tests
-          run: echo hello
+          uses: ./.github/workflows/playwright
+          with:
+            project: web
+            dir: ./e2e-tests
           # uses: ./.github/workflows/actions/playwright
           # with:
           #   project: chromium

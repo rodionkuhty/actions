@@ -1,0 +1,34 @@
+name: playwright
+
+on:
+  workflow_call:
+    inputs:
+      project:
+        description: "project name"
+        required: false
+        type: string
+        default: "web"
+      dir:
+        description: "working directory"
+        type: string
+        default: "./e2e-tests"
+
+jobs:
+  playwright:
+    name: 'Playwright Tests'
+    runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.52.0-noble
+      options: --user 1001
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+      - name: Install dependencies
+        run: npx playwright ${{ inputs.project }}
+        working-directory: ${{ inputs.dir }}
+      
