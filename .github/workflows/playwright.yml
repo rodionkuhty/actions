@@ -51,16 +51,26 @@ jobs:
         run: npx playwright test --project ${{ inputs.project }}
         working-directory: ${{ inputs.dir }}
 
-      - name: Generate Allure report
-        run: |
-          npm install -g allure-commandline
-          allure generate allure-results -o allure-report --clean
-        working-directory: ${{ inputs.dir }}
+      - name: Load Test Report History
+        uses: actions/checkout@v4
+        if: always()
+        continue-on-error: true
+        with:
+          ref: ${{ inputs.gh-page-branch }}
+          path: ${{ inputs.gh-page-branch }}
+
+      - name: Build test report
+        uses: simple-elf/allure-report-action@v1.7
+        if: always()
+        with:
+          gh_pages: ${{ inputs.gh-page-branch }}
+          allure_history: allure-history
+          allure_results: ${{ inputs.dir }}/${{ inputs.allure-results-dir }}
 
       - name: Upload Allure report
         uses: peaceiris/actions-gh-pages@v4
+        if: always()
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ${{inputs.dir}}/${{ inputs.allure-results-dir }}
           publish_branch: ${{ inputs.gh-page-branch }}
-          keep_files: true
