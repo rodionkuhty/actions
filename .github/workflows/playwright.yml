@@ -51,7 +51,7 @@ jobs:
         run: npx playwright test --project ${{ inputs.project }}
         working-directory: ${{ inputs.dir }}
 
-      - name: Load Test Report History
+      - name: Load test report history
         uses: actions/checkout@v4
         if: always()
         continue-on-error: true
