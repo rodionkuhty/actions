@@ -31,6 +31,7 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+        working-directory: ${{ inputs.dir }}
       - name: Run Playwright tests
         run: npx playwright test --project ${{ inputs.project }}
         working-directory: ${{ inputs.dir }}
