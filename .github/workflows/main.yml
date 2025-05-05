@@ -5,5 +5,5 @@ jobs:
     pages:
       uses: ./.github/workflows/playwright.yml
       with:
-        project: web
+        project: chromium
         dir: ./e2e-tests
