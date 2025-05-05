@@ -8,7 +8,7 @@ jobs:
         - name: checkout
           uses: actions/checkout@v4
         - name: run playwright tests
-          uses: ./.github/workflows/playwright
+          uses: ./.github/workflows/playwright.yml
           with:
             project: web
             dir: ./e2e-tests
