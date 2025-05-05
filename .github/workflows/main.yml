@@ -7,13 +7,10 @@ jobs:
       steps:
         - name: checkout
           uses: actions/checkout@v4
+
         - name: run playwright tests
           uses: ./.github/workflows/playwright.yml
           with:
-            project: web
+            project: chromium
             dir: ./e2e-tests
-          # uses: ./.github/workflows/actions/playwright
-          # with:
-          #   project: chromium
-          #   workdir: ./e2e-tests    
-
+          
