@@ -1,0 +1,21 @@
+services:
+  back-end:
+    build:
+      context: ./be
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
+    networks:
+      - localhost
+  front-end:
+    build:
+      context: ./fe
+      dockerfile: Dockerfile-front-end
+    ports:
+      - 3000:3000
+    networks:
+      - localhost
+networks:
+  localhost:
+    driver: bridge
+  

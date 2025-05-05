@@ -2,7 +2,6 @@ import Head from "next/head";
 import Image from "next/image";
 import { Geist, Geist_Mono } from "next/font/google";
 import styles from "src/styles/Home.module.css";
-import { useEffect, useState } from "react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,27 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export default function Home() {
-  
-  interface Data {
-    date: string;
-    temperatureC: number;
-  }
 
-  const [data, setData] = useState<Data | null>(null);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch("http://backend:8080/test");
-        const result = await response.json();
-        setData(result);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
-    fetchData();
-  }, []);
   return (
     <>
       <Head>
@@ -56,10 +35,6 @@ export default function Home() {
             height={38}
             priority
           />
-          <div>
-            <p>{data?.date}</p>
-            <p>{data?.temperatureC}</p>
-          </div>
           <ol>
             <li>
               Get started by editing <code>src/pages/index.tsx</code>.

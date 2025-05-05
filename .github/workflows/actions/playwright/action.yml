@@ -34,3 +34,16 @@ runs:
       run: docker run --network=playwright --name playwright-tests playwright
       shell: bash
       working-directory: ${{ inputs.workdir }}
+    - name: Generate Allure Report
+      run: |
+          npm install -g allure-commandline --save-dev
+          # Generate report from the allure-results folder and output it into allure-report folder.
+          allure generate allure-results --clean -o allure-report
+      shell: bash
+      working-directory: ${{ inputs.workdir }}  
+    - name: Publish Allure Report
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ${{ inputs.workdir }}/allure-report
+       
