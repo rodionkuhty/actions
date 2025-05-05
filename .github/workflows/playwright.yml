@@ -61,6 +61,6 @@ jobs:
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ${{ inputs.allure-results-dir }}
+          publish_dir: ${{inputs.dir}}/${{ inputs.allure-results-dir }}
           publish_branch: ${{ inputs.gh-page-branch }}
           keep_files: true
