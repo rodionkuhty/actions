@@ -30,6 +30,6 @@ jobs:
           node-version: lts/*
 
       - name: Install dependencies
-        run: npx playwright --project ${{ inputs.project }}
+        run: npx playwright test --project ${{ inputs.project }}
         working-directory: ${{ inputs.dir }}
       
