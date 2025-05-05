@@ -1,16 +1,30 @@
-# name: Frontend Test Workflow
-
-# on:
-#   push:
-#     branches:
-#       - main
-#   pull_request:
-
+# name: pw
+# on: 
+#   workflow_call:
+#     inputs:
+#       project:
+#         required: true
+#         type: string
+#       directory:
+#         required: false
+#         type: string
+#       url:
+#         required: true
+#         type: string
 # jobs:
-#   test-self:
-#     runs-on: [self-hosted, macOS]
-
+#   playwright:
+#     runs-on: ubuntu-latest
+#     container:
+#         image: mcr.microsoft.com/playwright:v1.51.1-noble
+#         options: --user 1001
 #     steps:
-#       # Checkout the repository
-#       - name: run simple code
-#         run: echo "self hosted"
+#         - uses: actions/checkout@v4
+#         - uses: actions/setup-node@v4
+#           with:
+#             node-version: 'lts/*'
+#         - name: install dependencies
+#           run: npm ci
+#           working-directory: ${{ inputs.directory }}
+#         - name: run Playwright tests
+#           run: npx playwright test --project=${{ inputs.project }} --reporter=list
+#           working-directory: ${{ inputs.directory }}
