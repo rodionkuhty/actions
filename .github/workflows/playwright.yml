@@ -28,8 +28,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: lts/*
-          
+
       - name: Install dependencies
-        run: npx playwright ${{ inputs.project }}
+        run: npx playwright --project ${{ inputs.project }}
         working-directory: ${{ inputs.dir }}
       
