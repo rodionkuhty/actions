@@ -62,6 +62,7 @@ jobs:
           gh_pages: ${{ inputs.gh-page-branch }}
           allure_history: allure-history
           allure_results: ${{ inputs.tests-dir }}/${{ inputs.allure-results-dir }}
+          keep_reports: 5
 
       - name: Check amount of allure results
         run: |
