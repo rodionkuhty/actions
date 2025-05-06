@@ -34,7 +34,7 @@ jobs:
     container:
       image: mcr.microsoft.com/playwright:v1.51.0-noble
       options: --user 1001
-
+      
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -83,5 +83,5 @@ jobs:
         if: always()
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ${{ inputs.allure-results-dir }}
+          publish_dir: ${{inputs.tests-dir}}/${{ inputs.allure-results-dir }}
           publish_branch: ${{ inputs.gh-page-branch }}
