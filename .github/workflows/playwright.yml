@@ -26,11 +26,6 @@ jobs:
     name: 'Playwright Tests'
     runs-on: ubuntu-latest
 
-    # defaults:
-    #   run:
-    #     shell: bash
-    #     working-directory: ${{ inputs.tests-dir }}
-
     container:
       image: mcr.microsoft.com/playwright:v1.51.0-noble
       options: --user 1001
