@@ -63,6 +63,11 @@ jobs:
           allure_history: allure-history
           allure_results: ${{ inputs.tests-dir }}/${{ inputs.allure-results-dir }}
 
+      - name: Check amount of allure results
+        run: |
+          cd ${{ inputs.tests-dir }} && ls
+          
+
       - name: Upload Allure report
         uses: peaceiris/actions-gh-pages@v4
         continue-on-error: true
