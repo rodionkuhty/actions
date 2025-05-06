@@ -6,6 +6,6 @@ jobs:
       uses: ./.github/workflows/playwright.yml
       with:
         project: chromium
-        dir: ./e2e-tests
+        tests-dir: ./e2e-tests
         gh-page-branch: allure-report
         allure-results-dir: allure-results
