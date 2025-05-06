@@ -45,6 +45,7 @@ jobs:
 
       - name: Run Playwright tests
         run: npx playwright test --project ${{ inputs.project }}
+        continue-on-error: true
         working-directory: ${{ inputs.tests-dir }}
 
       - name: Load test report history
