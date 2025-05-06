@@ -9,11 +9,11 @@ on:
         type: string
         default: "chromium"
       tests-dir:
-        description: "working directory"
+        description: "tests directory"
         type: string
         default: "./e2e-tests"
       gh-page-branch:
-        description: "GitHub page"
+        description: "GitHub page default branch"
         type: string
         default: "allure-report"
       allure-results-dir:
@@ -26,10 +26,10 @@ jobs:
     name: 'Playwright Tests'
     runs-on: ubuntu-latest
 
-    defaults:
-      run:
-        shell: bash
-        working-directory: ${{ inputs.tests-dir }}
+    # defaults:
+    #   run:
+    #     shell: bash
+    #     working-directory: ${{ inputs.tests-dir }}
 
     container:
       image: mcr.microsoft.com/playwright:v1.51.0-noble
