@@ -56,7 +56,7 @@ jobs:
           path: ${{ inputs.gh-page-branch }}
 
       - name: Build test report
-        uses: simple-elf/allure-report-actiocdn@master
+        uses: simple-elf/allure-report-action@master
         continue-on-error: true
         with:
           gh_pages: ${{ inputs.gh-page-branch }}
