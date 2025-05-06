@@ -7,8 +7,8 @@ on:
         description: "project name"
         required: false
         type: string
-        default: "web"
-      dir:
+        default: "chromium"
+      tests-dir:
         description: "working directory"
         type: string
         default: "./e2e-tests"
@@ -45,11 +45,11 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        working-directory: ${{ inputs.dir }}
+        working-directory: ${{ inputs.tests-dir }}
 
       - name: Run Playwright tests
         run: npx playwright test --project ${{ inputs.project }}
-        working-directory: ${{ inputs.dir }}
+        working-directory: ${{ inputs.tests-dir }}
 
       - name: Load test report history
         uses: actions/checkout@v4
@@ -65,12 +65,12 @@ jobs:
         with:
           gh_pages: ${{ inputs.gh-page-branch }}
           allure_history: allure-history
-          allure_results: ${{ inputs.dir }}/${{ inputs.allure-results-dir }}
+          allure_results: ${{ inputs.tests-dir }}/${{ inputs.allure-results-dir }}
 
       - name: Upload Allure report
-        uses: peaceiris/actions-gh-pages@v4
+        uses: peaceiris/actions-gh-pages@v3
         if: always()
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ${{inputs.dir}}/${{ inputs.allure-results-dir }}
+          publish_dir: ${{inputs.tests-dir}}/${{ inputs.allure-results-dir }}
           publish_branch: ${{ inputs.gh-page-branch }}
