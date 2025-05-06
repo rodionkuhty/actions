@@ -80,4 +80,5 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: allure-history
+          keep_files: false
           publish_branch: ${{ inputs.gh-page-branch }}
