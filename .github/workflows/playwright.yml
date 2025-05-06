@@ -66,7 +66,7 @@ jobs:
       - name: Check amount of allure results
         run: |
           run: |
-            HISTORY_DIR="allure-results/history"
+            HISTORY_DIR="./e2e-tests/allure-results/history"
             MAX_HISTORY=5
             if [ -d "$HISTORY_DIR" ]; then
             cd "$HISTORY_DIR" || exit 1
