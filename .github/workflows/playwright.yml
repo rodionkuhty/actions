@@ -65,7 +65,7 @@ jobs:
 
       - name: Check amount of allure results
         run: |
-          cd ${{ inputs.tests-dir }} && cd ${{ inputs.allure-results-dir }} && ls
+          cd ${{ inputs.tests-dir }} && cd ${{ inputs.allure-results-dir }} && cd history && ls
           
 
       - name: Upload Allure report
