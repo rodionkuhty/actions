@@ -83,5 +83,5 @@ jobs:
         if: always()
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ${{inputs.tests-dir}}/${{ inputs.allure-results-dir }}
+          publish_dir: allure-history
           publish_branch: ${{ inputs.gh-page-branch }}
