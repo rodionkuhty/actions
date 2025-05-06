@@ -65,7 +65,13 @@ jobs:
 
       - name: Check amount of allure results
         run: |
-          cd ${{ inputs.tests-dir }} && cd ${{ inputs.allure-results-dir }} && cd history && ls
+          run: |
+            HISTORY_DIR="allure-results/history"
+            MAX_HISTORY=5
+            if [ -d "$HISTORY_DIR" ]; then
+            cd "$HISTORY_DIR" || exit 1
+            ls -1t | tail -n +$((MAX_HISTORY+1)) | xargs rm -f
+          fi
           
 
       - name: Upload Allure report
