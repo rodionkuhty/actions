@@ -68,7 +68,7 @@ jobs:
           allure_results: ${{ inputs.tests-dir }}/${{ inputs.allure-results-dir }}
 
       - name: Check dir
-        run: pwd
+        run: pwd && ls -la
         working-directory: ${{ inputs.tests-dir }}
 
       - name: Upload Allure report
