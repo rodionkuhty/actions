@@ -43,6 +43,17 @@ jobs:
         run: npm install
         working-directory: ${{ inputs.tests-dir }}
 
+      - name: Check domain
+        run: |
+          STATUS_CODE=$(curl -o /dev/null -s -w "%{http_code}" https://playwright.dev)
+          if [ "$STATUS_CODE" -eq 200 ]; then
+            echo "URL is reachable with status code $STATUS_CODE"
+            echo "url=https://playwright.dev" >> $GITHUB_ENV
+          else
+            echo "URL is not reachable. Status code: $STATUS_CODE"
+            exit 1
+          fi
+
       - name: Run Playwright tests
         run: npx playwright test --project ${{ inputs.project }}
         continue-on-error: true
@@ -62,18 +73,7 @@ jobs:
           gh_pages: ${{ inputs.gh-page-branch }}
           allure_history: allure-history
           allure_results: ${{ inputs.tests-dir }}/${{ inputs.allure-results-dir }}
-          keep_reports: 5
 
-      - name: Check amount of allure results
-        run: |
-          run: |
-            HISTORY_DIR="./e2e-tests/allure-results/history"
-            MAX_HISTORY=5
-            if [ -d "$HISTORY_DIR" ]; then
-            cd "$HISTORY_DIR" || exit 1
-            ls -1t | tail -n +$((MAX_HISTORY+1)) | xargs rm -f
-          fi
-          
 
       - name: Upload Allure report
         uses: peaceiris/actions-gh-pages@v4
