@@ -1,0 +1,89 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: has title
+- Location: /__w/actions/actions/e2e-tests/tests/example.spec.ts:3:5
+
+# Error details
+
+```
+Error: Timed out 5000ms waiting for expect(locator).toHaveTitle(expected)
+
+Locator: locator(':root')
+Expected pattern: /Playwright/
+Received string:  "Google"
+Call log:
+  - expect.toHaveTitle with timeout 5000ms
+  - waiting for locator(':root')
+    9 × locator resolved to <html lang="en" itemscope="" itemtype="http://schema.org/WebPage">…</html>
+      - unexpected value "Google"
+
+    at /__w/actions/actions/e2e-tests/tests/example.spec.ts:7:22
+```
+
+# Page snapshot
+
+```yaml
+- navigation:
+  - link "About"
+  - link "Store"
+  - link "Gmail"
+  - link "Search for Images": Images
+  - button "Google apps":
+    - img
+  - link "Sign in"
+- img
+- search:
+  - img
+  - combobox "Search"
+  - button "Search by voice":
+    - img
+  - button "Search by image":
+    - img
+  - button "Google Search"
+  - button "I'm Feeling Lucky"
+- img
+- text: "Describe your dream fit:"
+- link "Shop real results with our new AI Shopping tool"
+- contentinfo:
+  - link "Advertising"
+  - link "Business"
+  - link "How Search works"
+  - link "Applying AI towards science and the environment"
+  - link "Privacy"
+  - link "Terms"
+  - button "Settings"
+- dialog "Sign in to Google":
+  - text: Sign in to Google Get the most from your Google account
+  - button "Stay signed out"
+  - button "Sign in"
+```
+
+# Test source
+
+```ts
+   1 | import { test, expect } from '@playwright/test';
+   2 |
+   3 | test('has title', async ({ page }) => {
+   4 |   await page.goto(process.env.url || 'https://google.com/');
+   5 |
+   6 |   // Expect a title "to contain" a substring.
+>  7 |   await expect(page).toHaveTitle(/Playwright/);
+     |                      ^ Error: Timed out 5000ms waiting for expect(locator).toHaveTitle(expected)
+   8 | });
+   9 |
+  10 | test('get started link', async ({ page }) => {
+  11 |   await page.goto(process.env.url || 'https://google.com/');
+  12 |
+  13 |   // Click the get started link.
+  14 |   await page.getByRole('link', { name: 'Get started' }).click();
+  15 |
+  16 |   // Expects page to have a heading with the name of Installation.
+  17 |   await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();
+  18 | });
+```
