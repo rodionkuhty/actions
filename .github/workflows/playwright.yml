@@ -48,7 +48,7 @@ jobs:
           STATUS_CODE=$(curl -o /dev/null -s -w "%{http_code}" https://playwright.dev)
           if [ "$STATUS_CODE" -eq 200 ]; then
             echo "URL is reachable with status code $STATUS_CODE"
-            echo "url=https://playwright.dev" >> $GITHUB_ENV
+            echo "url=https://google.com" >> $GITHUB_ENV
           else
             echo "URL is not reachable. Status code: $STATUS_CODE"
             exit 1
